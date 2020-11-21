@@ -7,7 +7,6 @@ import me.dongheelee.celladapter.Cell
 import me.dongheelee.celladapterdemo.R
 
 class ItemCell(
-    override val containerView: View,
     private val clickEvent: (CellTypes.Item) -> Unit,
     private val checkedEvent: (CellTypes.Item) -> Unit
 ) : Cell<CellTypes>(containerView) {
