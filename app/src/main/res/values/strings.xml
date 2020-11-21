@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CellAdapter</string>
+
+    <string name="grid">Grid</string>
+    <string name="linear">Linear</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="clear">Clear</string>
+    <string name="add_items">Add Items</string>
+
+    <string name="header">HEADER</string>
+    <string name="footer">FOOTER</string>
+</resources>
