@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity(), CellAdapter.Delegate<CellTypes> {
 //            }
             R.layout.item -> ItemCell(
                 view,
-                clickEvent = {
+                isItemClickedEvent = {
 //                    addCell(CellPosition.HEAD)
 //                    addCell(CellPosition.TAIL)
 //
@@ -115,11 +115,9 @@ class MainActivity : AppCompatActivity(), CellAdapter.Delegate<CellTypes> {
 //                    removeCellByCell(it)
 //                    removeCellWithSkipTail()
                 },
-                checkedEvent = {
-                    cellAdapter.updateCell(it)
-                }
+                isItemSelectedEvent = cellAdapter::updateCell
             )
-            else -> throw CanNotMappingCellException
+            else -> error("Couldn't match the view type")
         }
 
     private fun updateCell(cell: CellTypes) {
