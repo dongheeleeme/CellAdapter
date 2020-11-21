@@ -80,7 +80,7 @@ open class CellAdapter<T : CellType>(
      * @param cell
      */
     fun updateCell(cell: T) {
-        val position = getCellPositionOrNull(cell) ?: throw CanNotFoundCellException
+        val position = getCellPositionOrNull(cell) ?: error("Couldn't find the cell")
 
         cells[position] = cell
         Handler().postDelayed({ notifyItemChanged(position, Unit) }, 10)
@@ -155,9 +155,8 @@ open class CellAdapter<T : CellType>(
      */
     fun getCellPositionOrNull(cell: T): Int? =
         try {
-            cells
-                .first { it.uniqueId() == cell.uniqueId() }
-                .let(cells::indexOf)
+            val foundCell = cells.first { it.uniqueId() == cell.uniqueId() }
+            cells.indexOf(foundCell)
         } catch (e: NoSuchElementException) {
             null
         }

@@ -25,10 +25,7 @@ class MainActivity : AppCompatActivity(), CellAdapter.Delegate<CellTypes> {
 
     private var isItemRemoved = false
 
-    private val items: List<Item> =
-        (0..100).map { it.toString() }.map {
-            Item(it.toLong(), it)
-        }
+    private val items = (0..100).map { Item(it.toLong(), it.toString()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +93,7 @@ class MainActivity : AppCompatActivity(), CellAdapter.Delegate<CellTypes> {
 //            }
             R.layout.item -> ItemCell(
                 view,
-                clickEvent = {
+                isItemClickedEvent = {
 //                    addCell(CellPosition.HEAD)
 //                    addCell(CellPosition.TAIL)
 //
@@ -115,11 +112,9 @@ class MainActivity : AppCompatActivity(), CellAdapter.Delegate<CellTypes> {
 //                    removeCellByCell(it)
 //                    removeCellWithSkipTail()
                 },
-                checkedEvent = {
-                    cellAdapter.updateCell(it)
-                }
+                isItemSelectedEvent = cellAdapter::updateCell
             )
-            else -> throw CanNotMappingCellException
+            else -> error("Couldn't match the view type")
         }
 
     private fun updateCell(cell: CellTypes) {

@@ -9,7 +9,6 @@ import android.view.View
 class StaticCell<T>(containerView: View) : Cell<T>(containerView) {
 
     override fun bind(data: T) {
-
         return
     }
 }

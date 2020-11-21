@@ -7,8 +7,9 @@ import me.dongheelee.celladapter.Cell
 import me.dongheelee.celladapterdemo.R
 
 class ItemCell(
-    private val clickEvent: (CellTypes.Item) -> Unit,
-    private val checkedEvent: (CellTypes.Item) -> Unit
+    private val containerView: View,
+    private val isItemClickedEvent: (CellTypes.Item) -> Unit,
+    private val isItemSelectedEvent: (CellTypes.Item) -> Unit
 ) : Cell<CellTypes>(containerView) {
 
     private val numberText by lazy { containerView.findViewById<TextView>(R.id.number_text) }
@@ -18,13 +19,12 @@ class ItemCell(
         if (data !is CellTypes.Item) return
 
         numberText.text = data.name
-        containerView.setOnClickListener { clickEvent(data) }
+        containerView.setOnClickListener { isItemClickedEvent.invoke(data) }
 
         checkBox.isChecked = data.isSelected
-        checkBox.setOnCheckedChangeListener { _, isChecked ->
-            data.isSelected = isChecked
-
-            checkedEvent.invoke(data)
+        checkBox.setOnClickListener {
+            data.isSelected = checkBox.isChecked
+            isItemSelectedEvent.invoke(data)
         }
     }
 }
