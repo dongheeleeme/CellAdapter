@@ -2,6 +2,9 @@
 [![](https://jitpack.io/v/dongheeleeme/CellAdapter.svg)](https://jitpack.io/#dongheeleeme/CellAdapter)
 [![Build Status](https://travis-ci.org/dongheeleeme/CellAdapter.svg?branch=master)](https://travis-ci.org/dongheeleeme/CellAdapter)
 
+## Demo
+<img src="./art/demo.gif" width="250px"/>
+
 ## How to setup
 Step 1. Add it in your root build.gradle at the end of repositories:
 ```groovy
